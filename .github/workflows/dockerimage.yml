@@ -10,7 +10,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Build the Docker image
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: build
       run: docker build . --file Dockerfile --tag hp73fpm:$(date +%s)
-    - name: Push the Docker image
+    - name: login
+      run: docker login docker.pkg.github.com --username jwwisniewski
+    - name: push
       run: docker push docker.pkg.github.com/jwwisniewski/php73fpm/hp73fpm:$(date +%s)
