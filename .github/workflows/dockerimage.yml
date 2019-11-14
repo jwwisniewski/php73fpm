@@ -13,6 +13,6 @@ jobs:
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
     - name: build
-      run: docker build . --file Dockerfile --tag hp73fpm:$(date +%s)
+      run: docker build . --file Dockerfile --tag hp73fpm:latest
     - name: push
-      run: docker push docker.pkg.github.com/jwwisniewski/php73fpm/hp73fpm:$(date +%s)
+      run: docker push docker.pkg.github.com/jwwisniewski/php73fpm/hp73fpm:latest
